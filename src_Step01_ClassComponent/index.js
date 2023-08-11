@@ -4,8 +4,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+//App.js 파일을 불러와서 App이라는 이름으로 사용하기
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+//public/index.html 파일에서 id가 root인 요소에 App을 렌더링하기
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
