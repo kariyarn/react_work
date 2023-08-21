@@ -1,43 +1,41 @@
 import './App.css';
-import { Component } from 'react';
-import MyCounter from './components/MyCounter';
-import YourCounter from './components/YourCounter';
-import OurCounter from './components/OurCounter';
-import WeCounter from './components/WeCounter';
-import WeCounter2 from './components/WeCounter2';
+import { useState } from 'react';
+import FoodComponent from './components/FoodComponent';
+import FoodComponent2 from './components/FoodComponent2';
+import FoodComponent3 from './components/FoodComponent3.js';
 
-// function App() {
-//   return (
-//     <div className='container'>
-//       <h1>인덱스페이지입니다</h1>
-//     </div>
-//   );
-// }
+function App() {
+  console.log("App 함수가 실행됩니다.")
 
-//함수형 component에서 클래스형 component로 변경하기
-class App extends Component{
-  //render() 메소드에서 리턴해주는 jsx를 활용해서 화면 구성이 된다.
-  render(){
-    return(
-      <div className='container'>
-        <h1>인덱스페이지입니다</h1>
-        <h3>MyCounter</h3>
-        <MyCounter/>
+  //object를 이용해서 상태관리 하기
+  const [state, setState] = useState({
+    name : "김구라",
+    age : 20
+  })
 
-        <h3>YourCounter</h3>
-        <YourCounter/>
+  return (
+    <div className='container'>
+      <h1>인덱스페이지입니다</h1>
+      <input type="text" value={state.name} onChange={(e)=>{
+        setState({
+          ...state,
+          name : e.target.value
+        })
+      }}/>
+      <input type="text" value={state.age} onChange={(e)=>{
+        setState({
+          ...state,
+          age : e.target.value
+        })
+      }}/>
+      <p>{`이름은 ${state.name}`}</p>
+      <p>{`이름은 ${state.age}`}</p>
 
-        <h3>OurCounter</h3>
-        <OurCounter/>
-
-        <h3>WeCounter</h3>
-        <WeCounter/>
-
-        <h3>WeCounter</h3>
-        <WeCounter2/>
-      </div>
-    )
-  }
+      <FoodComponent/>
+      <FoodComponent2/>
+      <FoodComponent3/>
+    </div>
+  );
 }
 
 export default App;
