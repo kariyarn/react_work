@@ -1,0 +1,71 @@
+{
+  "posts": [
+    {
+      "title": "rrr",
+      "author": "김구라",
+      "id": 1
+    },
+    {
+      "title": "ddd",
+      "author": "ddd",
+      "id": 2
+    },
+    {
+      "title": "3번째",
+      "author": "추가했습니다.",
+      "id": 3
+    },
+    {
+      "title": "afd",
+      "author": "adsf",
+      "id": 5
+    },
+    {
+      "title": "추가앗",
+      "author": "아아앗",
+      "id": 9
+    },
+    {
+      "title": "ㄹㅎ유",
+      "author": "휴",
+      "id": 17
+    },
+    {
+      "title": "asdf",
+      "author": "asdf",
+      "id": 18
+    },
+    {
+      "title": "asdf",
+      "author": "adsf",
+      "id": 19
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "todos": [
+    {
+      "id": 1,
+      "title": "Read SitePoint article",
+      "complete": true
+    },
+    {
+      "id": 2,
+      "title": "Clean inbox",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "title": "Make restaurant reservation",
+      "complete": true
+    }
+  ]
+}

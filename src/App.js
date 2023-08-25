@@ -1,41 +1,61 @@
+
 import './App.css';
-import { useState } from 'react';
-import FoodComponent from './components/FoodComponent';
-import FoodComponent2 from './components/FoodComponent2';
-import FoodComponent3 from './components/FoodComponent3.js';
+
+import axios from 'axios';
+import {useRef} from 'react';
 
 function App() {
-  console.log("App 함수가 실행됩니다.")
-
-  //object를 이용해서 상태관리 하기
-  const [state, setState] = useState({
-    name : "김구라",
-    age : 20
-  })
+  // input 요소의 참조값을 담을 useRef 객체 
+  let inputId=useRef();
 
   return (
-    <div className='container'>
-      <h1>인덱스페이지입니다</h1>
-      <input type="text" value={state.name} onChange={(e)=>{
-        setState({
-          ...state,
-          name : e.target.value
+    <div className="container">
+      <h1>인덱스 페이지 입니다.</h1>
+      <button onClick={()=>{
+        axios.post("http://localhost:9000/boot07/todos",{
+          title:"react 공부하기",
+          complete:false
         })
-      }}/>
-      <input type="text" value={state.age} onChange={(e)=>{
-        setState({
-          ...state,
-          age : e.target.value
+        .then(res=>{
+          console.log(res.data);
         })
-      }}/>
-      <p>{`이름은 ${state.name}`}</p>
-      <p>{`이름은 ${state.age}`}</p>
-
-      <FoodComponent/>
-      <FoodComponent2/>
-      <FoodComponent3/>
+        .catch(error=>{
+          console.log(error);
+        });
+      }}>Spring Boot 에 요청하기</button>
+      <button onClick={()=>{
+        axios.post("http://localhost:9000/boot07/todos2",{
+          title:"react 공부하기",
+          complete:false
+        })
+        .then(res=>{
+          console.log(res.data);
+        })
+        .catch(error=>{
+          console.log(error);
+        });
+      }}>Spring Boot 에 요청하기2</button>
+      <br />
+      <input ref={inputId} type="text" placeholder='아이디 입력...'/>
+      <button onClick={()=>{
+        axios.post("http://localhost:9000/boot07/api/signup",{
+          id:inputId.current.value
+        })
+        .then(res=>{
+          console.log(res.data);
+          if(res.data.isSignupSuccess){
+            alert("가입되었습니다")
+          }else{
+            alert("중복된 아이디입니다.")
+          }
+        })
+        .catch(error=>{
+          console.log(error);
+        });
+      }}>가입</button>
     </div>
   );
 }
 
+// import 한 곳에 무엇을 리턴해줄지 결정하기 
 export default App;
